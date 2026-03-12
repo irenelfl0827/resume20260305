@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>羅聆方 - 個人履歷</title>
+    <style>
+        /* CSS 樣式設定 */
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f4f7f6;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .resume-container {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 { margin: 0; color: var(--primary-color); letter-spacing: 2px; }
+        .student-id { color: #7f8c8d; font-size: 0.9em; margin-top: 5px; }
+
+        section { margin-bottom: 25px; }
+        h2 { 
+            color: var(--accent-color); 
+            border-left: 5px solid var(--accent-color);
+            padding-left: 10px;
+            font-size: 1.2em;
+        }
+
+        ul { line-height: 1.8; }
+        .skill-tag {
+            display: inline-block;
+            background: #e1f5fe;
+            color: #0288d1;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9em;
+        }
+
+        #time-display {
+            text-align: right;
+            font-size: 0.8em;
+            color: #bdc3c7;
+            margin-top: 20px;
+        }
+
+        button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover { background: #2980b9; }
+    </style>
+</head>
+<body>
+
+<div class="resume-container">
+    <header>
+        <h1>羅聆方</h1>
+        <div class="student-id">學號：114018029</div>
+        <p>亞洲大學 | 聽力學與語言治療學系</p>
+    </header>
+
+    <section>
+        <h2>教育背景</h2>
+        <ul>
+            <li><strong>亞洲大學</strong> - 聽力學與語言治療學系 (在學中)</li>
+            <li>擅長領域：頭頸部解剖學、語音聲學、心理學</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>專業技能</h2>
+        <div id="skills">
+            <span class="skill-tag">語言評估</span>
+            <span class="skill-tag">聽力檢測</span>
+            <span class="skill-tag">英語溝通</span>
+            <span class="skill-tag">基礎網頁開發 (HTML/CSS)</span>
+            <span class="skill-tag">日本與 JLPT N5 準備中</span>
+        </div>
+    </section>
+
+    <section>
+        <h2>專案與經歷</h2>
+        <ul>
+            <li>校園永續發展計畫：運動場環境維護與衛教海報製作</li>
+            <li>系學會戲劇組成員：跨領域團隊合作與溝通挑戰</li>
+            <li>GitHub 個人網頁開發專案</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>互動功能</h2>
+        <button onclick="sayHello()">點擊向我打招呼</button>
+        <p id="greeting-msg"></p>
+    </section>
+
+    <div id="time-display"></div>
+</div>
+
+<script>
+    // JavaScript 互動功能
+    function sayHello() {
+        const msg = document.getElementById('greeting-msg');
+        msg.innerHTML = "你好！很高興認識你，歡迎查看我的個人履歷。";
+        msg.style.color = "#27ae60";
+        msg.style.marginTop = "10px";
+    }
+
+    // 顯示最後更新時間
+    function updateTime() {
+        const now = new Date();
+        document.getElementById('time-display').innerHTML = "最後更新日期：" + now.toLocaleDateString();
+    }
+    updateTime();
+</script>
+
+</body>
+</html>

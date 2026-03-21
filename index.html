@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>羅聆方 - 個人履歷</title>
     <style>
-        /* CSS 樣式設定 */
         :root {
             --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --bg-color: #f4f7f6;
+            --accent-color: #3d5a80;
+            --bg-color: #f0f4f8;
+            --text-color: #2b2d42;
         }
 
         body {
@@ -17,129 +17,131 @@
             background-color: var(--bg-color);
             margin: 0;
             padding: 40px 20px;
-            display: flex;
-            justify-content: center;
+            color: var(--text-color);
         }
 
         .resume-container {
             background: white;
-            width: 100%;
-            max-width: 800px;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex; /* 使用彈性佈局讓照片與文字並排 */
+            flex-wrap: wrap;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* 左側側邊欄（放照片與基本資料） */
+        .sidebar {
+            background-color: var(--primary-color);
+            color: white;
             padding: 40px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-radius: 8px;
-        }
-
-        header {
+            flex: 1;
+            min-width: 250px;
             text-align: center;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
         }
 
-        h1 { margin: 0; color: var(--primary-color); letter-spacing: 2px; }
-        .student-id { color: #7f8c8d; font-size: 0.9em; margin-top: 5px; }
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.2);
+            object-fit: cover; /* 確保照片不變形 */
+            margin-bottom: 20px;
+        }
 
-        section { margin-bottom: 25px; }
+        /* 右側主內容區 */
+        .main-content {
+            padding: 40px;
+            flex: 2;
+            min-width: 300px;
+        }
+
+        h1 { margin: 0; font-size: 2.5em; }
+        .student-id { opacity: 0.8; font-size: 1.1em; margin-bottom: 20px; }
+
         h2 { 
-            color: var(--accent-color); 
-            border-left: 5px solid var(--accent-color);
-            padding-left: 10px;
-            font-size: 1.2em;
+            color: var(--accent-color);
+            border-bottom: 2px solid #edf2f4;
+            padding-bottom: 5px;
+            margin-top: 30px;
         }
 
-        ul { line-height: 1.8; }
+        ul { padding-left: 20px; line-height: 1.8; }
+        .skill-list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; }
         .skill-tag {
-            display: inline-block;
-            background: #e1f5fe;
-            color: #0288d1;
-            padding: 5px 12px;
-            border-radius: 20px;
-            margin: 5px;
+            background: #edf2f4;
+            padding: 6px 15px;
+            border-radius: 5px;
             font-size: 0.9em;
+            color: var(--primary-color);
         }
 
         #time-display {
-            text-align: right;
+            margin-top: 40px;
             font-size: 0.8em;
-            color: #bdc3c7;
-            margin-top: 20px;
+            color: #8d99ae;
+            text-align: right;
         }
 
-        button {
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
+        /* 手機版適應 */
+        @media (max-width: 600px) {
+            .resume-container { flex-direction: column; }
+            .sidebar { padding: 30px; }
         }
-
-        button:hover { background: #2980b9; }
     </style>
 </head>
 <body>
 
 <div class="resume-container">
-    <header>
+    <aside class="sidebar">
+        <img src="images/profile.jpg" alt="羅聆方 照片" class="profile-img">
         <h1>羅聆方</h1>
-        <div class="student-id">學號：114018029</div>
-        <p>亞洲大學 | 聽力學與語言治療學系</p>
-    </header>
+        <p class="student-id">學號：114018029</p>
+        <p>亞洲大學<br>聽力學與語言治療學系</p>
+    </aside>
 
-    <section>
-        <h2>教育背景</h2>
-        <ul>
-            <li><strong>亞洲大學</strong> - 聽力學與語言治療學系 (在學中)</li>
-            <li>擅長領域：頭頸部解剖學、語音聲學、心理學</li>
-        </ul>
-    </section>
+    <main class="main-content">
+        <section>
+            <h2>教育背景</h2>
+            <ul>
+                <li><strong>亞洲大學</strong> - 聽力學與語言治療學系 (2022 - 2026)</li>
+                <li>專注於溝通障礙評估、聽力檢測、心理學實務</li>
+            </ul>
+        </section>
 
-    <section>
-        <h2>專業技能</h2>
-        <div id="skills">
-            <span class="skill-tag">語言評估</span>
-            <span class="skill-tag">聽力檢測</span>
-            <span class="skill-tag">英語溝通</span>
-            <span class="skill-tag">基礎網頁開發 (HTML/CSS)</span>
-            <span class="skill-tag">日本與 JLPT N5 準備中</span>
-        </div>
-    </section>
+        <section>
+            <h2>專業技能</h2>
+            <div class="skill-list">
+                <span class="skill-tag">聽力學分析</span>
+                <span class="skill-tag">語言治療評估</span>
+                <span class="skill-tag">HTML/CSS/Git</span>
+                <span class="skill-tag">JLPT N5 準備中</span>
+                <span class="skill-tag">團隊溝通與協作</span>
+            </div>
+        </section>
 
-    <section>
-        <h2>專案與經歷</h2>
-        <ul>
-            <li>校園永續發展計畫：運動場環境維護與衛教海報製作</li>
-            <li>系學會戲劇組成員：跨領域團隊合作與溝通挑戰</li>
-            <li>GitHub 個人網頁開發專案</li>
-        </ul>
-    </section>
+        <section>
+            <h2>經歷與活動</h2>
+            <ul>
+                <li><strong>校園戲劇組：</strong> 參與角色演出與台詞修正，提升表達能力。</li>
+                <li><strong>志願服務：</strong> 曾參與社區運動場維護，推廣環境健康。</li>
+                <li><strong>網頁專案：</strong> 獨立完成個人 GitHub Pages 部署。</li>
+            </ul>
+        </section>
 
-    <section>
-        <h2>互動功能</h2>
-        <button onclick="sayHello()">點擊向我打招呼</button>
-        <p id="greeting-msg"></p>
-    </section>
-
-    <div id="time-display"></div>
+        <div id="time-display"></div>
+    </main>
 </div>
 
 <script>
-    // JavaScript 互動功能
-    function sayHello() {
-        const msg = document.getElementById('greeting-msg');
-        msg.innerHTML = "你好！很高興認識你，歡迎查看我的個人履歷。";
-        msg.style.color = "#27ae60";
-        msg.style.marginTop = "10px";
-    }
-
-    // 顯示最後更新時間
-    function updateTime() {
-        const now = new Date();
-        document.getElementById('time-display').innerHTML = "最後更新日期：" + now.toLocaleDateString();
-    }
-    updateTime();
+    // 自動更新日期
+    const dateElement = document.getElementById('time-display');
+    const updateDate = () => {
+        const d = new Date();
+        dateElement.innerHTML = `最後更新於 ${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
+    };
+    updateDate();
 </script>
 
 </body>

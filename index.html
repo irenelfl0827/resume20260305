@@ -101,9 +101,7 @@
         </div>
         
 
-        <audio controls>
-  <source src="mp3/good.mp3.wav" type="audio/mpeg">
-</audio>
+
         <div class="contact-info">
             <div class="contact-item"><i class="fas fa-id-card"></i> 學號：114018029</div>
             <div class="contact-item"><i class="fas fa-university"></i> 亞洲大學 聽語系</div>
@@ -185,6 +183,23 @@
         </div>
     </main>
 </div>
+<audio id="bgm" autoplay loop playsinline>
+  <source src="mp3/good.mp3.wav" type="audio/mpeg">
+</audio>
 
+<script>
+  const audio = document.getElementById("bgm");
+
+  // 嘗試直接播放
+  audio.play().catch(() => {
+    // 若被擋，快速解除靜音再播放
+    audio.muted = true;
+    audio.play();
+
+    setTimeout(() => {
+      audio.muted = false;
+    }, 100);
+  });
+</script>
 </body>
 </html>

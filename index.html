@@ -2,8 +2,9 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>羅聆方 - 個人履歷</title>
-    <link rel="stylesheet" href="https://github.com/irenelfl0827/resume20260305.git">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --sidebar-color: #d8a4a4; /* 乾燥玫瑰粉 */
@@ -15,7 +16,7 @@
         body {
             font-family: "Microsoft JhengHei", sans-serif;
             background-color: #eee;
-            margin: 0; padding: 0;
+            margin: 0; padding: 20px;
             display: flex; justify-content: center;
         }
 
@@ -25,8 +26,7 @@
             min-height: 297mm;
             background: white;
             display: flex;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
-            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
         /* 左側欄 */
@@ -34,125 +34,154 @@
             width: 35%;
             background-color: var(--sidebar-color);
             color: white;
-            padding: 40px 25px;
-            box-sizing: border-box;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* 六角形頭像設計 */
-        .profile-hex-wrap {
-            position: relative;
+        /* 六角形照片 */
+        .profile-hex {
             width: 180px; height: 180px;
-            margin: 0 auto 30px;
+            background-color: var(--header-hex);
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            background: var(--header-hex);
             display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px;
         }
 
-        .profile-img {
-            width: 90%; height: 90%;
+        .profile-hex img {
+            width: 165px; height: 165px;
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
             object-fit: cover;
-            background: white;
         }
 
-        .contact-info { margin-top: 40px; font-size: 14px; line-height: 2; }
-        .contact-info i { width: 25px; }
+        .contact-info { width: 100%; margin-top: 30px; }
+        .contact-item { margin-bottom: 15px; font-size: 14px; display: flex; align-items: center; }
+        .contact-item i { margin-right: 10px; width: 20px; text-align: center; }
 
-        /* 技能圓點 */
-        .skill-item { margin-bottom: 15px; }
-        .dots { display: inline-block; margin-left: 10px; }
-        .dot { 
-            height: 10px; width: 10px; 
-            background-color: rgba(255,255,255,0.4); 
-            border-radius: 50%; display: inline-block; 
-        }
-        .dot.active { background-color: #3498db; }
+        .skill-section { width: 100%; margin-top: 30px; }
+        .skill-item { margin-bottom: 12px; }
+        .skill-name { font-size: 14px; margin-bottom: 5px; display: block; }
+        .dots { display: flex; gap: 5px; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); }
+        .dot.active { background: white; }
 
         /* 右側欄 */
         .main-content {
             width: 65%;
-            padding: 50px 40px;
-            background-color: var(--main-bg);
-            box-sizing: border-box;
+            padding: 50px;
+            background: var(--main-bg);
         }
 
-        h1 { font-size: 48px; color: #5d6d7e; margin: 0; letter-spacing: 5px; text-align: right; }
-        .section-title {
-            background: #fff;
-            border: 2px solid #bdc3c7;
-            border-radius: 20px;
-            display: inline-block;
-            padding: 5px 25px;
-            color: #bdc3c7;
-            margin: 30px 0 15px;
-            font-weight: bold;
-        }
+        h1 { margin: 0; font-size: 36px; color: #333; letter-spacing: 5px; }
+        .job-title { color: var(--text-gray); font-size: 18px; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
 
-        /* 時間軸經歷 */
-        .experience-item {
-            display: flex;
-            margin-bottom: 20px;
-            position: relative;
-            padding-left: 20px;
-            border-left: 2px solid #bdc3c7;
-        }
-        .exp-date { width: 100px; font-size: 13px; color: var(--text-gray); }
-        .exp-text { flex: 1; font-size: 14px; }
+        .section { margin-bottom: 35px; }
+        .section-title { font-size: 20px; color: var(--header-hex); font-weight: bold; margin-bottom: 15px; border-left: 5px solid var(--header-hex); padding-left: 10px; }
+        
+        .exp-item { margin-bottom: 20px; position: relative; padding-left: 20px; border-left: 1px solid #ddd; }
+        .exp-date { font-size: 13px; color: var(--text-gray); }
+        .exp-header { font-weight: bold; color: #444; margin: 5px 0; }
+        .exp-desc { font-size: 14px; color: #666; line-height: 1.6; }
 
-        .hobby-icons { display: flex; justify-content: space-around; margin-top: 20px; color: #3498db; font-size: 30px; }
+        .hobby-icons { display: flex; gap: 20px; font-size: 24px; color: var(--header-hex); }
 
-        @media print {
-            body { background: none; }
-            .resume-container { box-shadow: none; margin: 0; }
+        @media (max-width: 600px) {
+            .resume-container { flex-direction: column; width: 100%; }
+            .sidebar, .main-content { width: 100%; box-sizing: border-box; }
         }
     </style>
 </head>
 <body>
-    <div class="resume-container">
-        <div class="sidebar">
-            <div class="profile-hex-wrap">
-                <img src="images/profile.jpg" class="profile-img">
-            </div>
-            
-            <div class="contact-info">
-                <p><i class="fas fa-phone"></i> (091)-122-565-XXX</p>
-                <p><i class="fas fa-envelope"></i> irenelfl0827@mail.com</p>
-                <p><i class="fas fa-graduation-cap"></i> 亞洲大學 聽語系</p>
-            </div>
 
-            <div style="text-align: center; margin-top: 50px; font-weight: bold; border-bottom: 2px solid white; padding-bottom: 5px;">技能</div>
-            <div class="contact-info">
-                <div class="skill-item">日語 <div class="dots"><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
-                <div class="skill-item">聽力評估 <div class="dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div></div>
+<div class="resume-container">
+    <aside class="sidebar">
+        <div class="profile-hex">
+            <img src="images/profile.jpg" alt="羅聆方 照片">
+        </div>
+        
+        <div class="contact-info">
+            <div class="contact-item"><i class="fas fa-id-card"></i> 學號：114018029</div>
+            <div class="contact-item"><i class="fas fa-university"></i> 亞洲大學 聽語系</div>
+            <div class="contact-item"><i class="fas fa-envelope"></i> AU114018029@asia.edu.tw</div>
+            <div class="contact-item"><i class="fas fa-location-dot"></i> 台灣，新北市新莊區</div>
+        </div>
+
+        <div class="skill-section">
+            <div class="section-title" style="color: white; border-color: white;">核心技能</div>
+            <div class="skill-item">
+                <span class="skill-name">語言治療評估</span>
+                <div class="dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="skill-item">
+                <span class="skill-name">聽力檢測基礎</span>
+                <div class="dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span></div>
+            </div>
+            <div class="skill-item">
+                <span class="skill-name">日語溝通 (JLPT N5)</span>
+                <div class="dots"><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="skill-item">
+                <span class="skill-name">Git / Web 開發</span>
+                <div class="dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <h1>羅聆方</h1>
+        <div class="job-title">聽力學與語言治療學系 | 專業實務培育中</div>
+
+        <div class="section">
+            <div class="section-title">關於我</div>
+            <p class="exp-desc">
+                目前就讀於亞洲大學聽語系，秉持人本心理學的精神，重視與患者之間的共感與接納。
+                具備高度的學習熱忱與正直的處事態度，致力於將聽覺科學與語言治療專業結合，
+                並正透過網頁開發技術嘗試建立數位化的專業個人履歷。
+            </p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">教育與學習</div>
+            <div class="exp-item">
+                <div class="exp-date">2022 - 2026 (預計畢業)</div>
+                <div class="exp-header">亞洲大學 - 聽力學與語言治療學系</div>
+                <div class="exp-desc">專注於解剖生理學、聽力評估、語言障礙導論，具備紮實的理論基礎。</div>
+            </div>
+            <div class="exp-item">
+                <div class="exp-date">2026.07 (預定考試)</div>
+                <div class="exp-header">語言檢定計畫 - JLPT N5</div>
+                <div class="exp-desc">目前正積極準備日檢，提升跨語言溝通能力。</div>
             </div>
         </div>
 
-        <div class="main-content">
-            <h1>羅聆方</h1>
-            <div style="text-align: right; color: var(--text-gray);">學號：114018029</div>
-
-            <div class="section-title">關於我</div>
-            <p style="font-size: 14px; color: #555; line-height: 1.8;">
-                就讀於亞洲大學聽力學與語言治療學系，對聽力康復與語言發展具備高度熱情。目前正積極準備 JLPT N5 考試，並致力於結合專業知識與科技應用。
-            </p>
-
-            <div class="section-title">經歷</div>
-            <div class="experience-item">
-                <div class="exp-date">2026 - 現在</div>
-                <div class="exp-text"><strong>專業學系課程進修</strong><br>專研耳道解剖學與純音聽力檢查技術。</div>
+        <div class="section">
+            <div class="section-title">經歷與活動</div>
+            <div class="exp-item">
+                <div class="exp-header">系上戲劇組成員</div>
+                <div class="exp-desc">參與劇本討論與演出，練習口語表達與舞台張力，增進團隊合作經驗。</div>
             </div>
-            <div class="experience-item">
-                <div class="exp-date">2025 - 2026</div>
-                <div class="exp-text"><strong>社區永續服務計畫</strong><br>負責區域環境維護與數據紀錄。</div>
+            <div class="exp-item">
+                <div class="exp-header">校園環境永續計畫</div>
+                <div class="exp-desc">執行校園菸蒂清理行動與海報製作，關注環境健康與社會責任。</div>
             </div>
+            <div class="exp-item">
+                <div class="exp-header">陪讀班志工服務</div>
+                <div class="exp-desc">擔任兒童陪讀志工，練習與兒童互動，奠定語言復健臨床基礎。</div>
+            </div>
+        </div>
 
+        <div class="section">
             <div class="section-title">興趣愛好</div>
             <div class="hobby-icons">
-                <i class="fas fa-music"></i>
-                <i class="fas fa-running"></i>
-                <i class="fas fa-baseball-bat-ball"></i>
+                <i class="fas fa-music" title="聽音樂"></i>
+                <i class="fas fa-running" title="慢跑"></i>
+                <i class="fas fa-mug-hot" title="焙茶愛好"></i>
+                <i class="fas fa-chart-line" title="投資研究"></i>
             </div>
         </div>
-    </div>
+    </main>
+</div>
+
 </body>
 </html>
